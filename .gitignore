@@ -1,0 +1,37 @@
+# Dependencies
+frontend/node_modules/
+backend/venv/
+
+# Build output
+frontend/dist/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude / Studio
+.studio/
+.claude/
+studio.config.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+.coverage
+htmlcov/

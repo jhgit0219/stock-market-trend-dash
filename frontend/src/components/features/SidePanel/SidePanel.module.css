@@ -1,0 +1,115 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panelHeader {
+  flex-shrink: 0;
+  padding: var(--space-4) var(--space-3) var(--space-2);
+}
+
+.panelTitle {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-faint);
+  pointer-events: none;
+  font-size: 13px;
+}
+
+.searchInput {
+  width: 100%;
+  background-color: var(--color-surface-overlay);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  padding: 6px 10px 6px 30px;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-faint);
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-raised);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  margin: var(--space-2) 0;
+}
+
+.listContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-1) var(--space-3) var(--space-4) var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+.listContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.listContainer::-webkit-scrollbar-track {
+  background: transparent;
+  margin: var(--space-1) 0;
+}
+
+.listContainer::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-strong);
+  border-radius: 3px;
+}
+
+.listbox {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.emptyState {
+  padding: var(--space-6) var(--space-3);
+  text-align: center;
+  color: var(--color-text-faint);
+  font-size: var(--font-size-sm);
+}
+
+.countBadge {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-faint);
+  padding: 1px 6px;
+  border-radius: 10px;
+  background-color: var(--color-surface-overlay);
+  font-family: var(--font-mono);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}

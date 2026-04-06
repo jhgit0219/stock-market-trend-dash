@@ -1,0 +1,94 @@
+.gridContainer {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  grid-auto-rows: minmax(0, 1fr);
+  min-height: 100%;
+}
+
+/* When grid has items, size rows relative to available space */
+.grid.hasItems {
+  /* Two rows fill the container at 1080p */
+  grid-auto-rows: calc((100vh - 52px - 32px - 12px) / 2);
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 400px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  opacity: 0.3;
+}
+
+.emptyTitle {
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.emptySubtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+  max-width: 260px;
+  line-height: 1.5;
+}
+
+.emptyArrow {
+  font-size: 24px;
+  color: var(--color-accent);
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translateX(0); }
+  50% { opacity: 0.8; transform: translateX(-8px); }
+}
+
+.cell {
+  min-height: 0;
+  position: relative;
+}
+
+.dropZone {
+  height: 100%;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+  font-size: var(--font-size-sm);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.dropZone.isOver {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.dragOverlay {
+  opacity: 0.9;
+  transform: rotate(1deg) scale(1.02);
+  box-shadow: var(--shadow-overlay);
+  pointer-events: none;
+}
