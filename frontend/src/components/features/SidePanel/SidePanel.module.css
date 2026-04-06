@@ -97,6 +97,25 @@
   font-size: var(--font-size-sm);
 }
 
+.retryButton {
+  margin-top: var(--space-3);
+  padding: 4px 12px;
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.retryButton:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
 .countBadge {
   flex-shrink: 0;
   font-size: var(--font-size-xs);

@@ -6,7 +6,7 @@ import styles from './SidePanel.module.css'
 
 export function SidePanel() {
   const [search, setSearch] = useState('')
-  const { data, isLoading, isError } = useStockList()
+  const { data, isLoading, isError, refetch } = useStockList()
   const { state, dispatch } = useGrid()
 
   const filteredStocks = useMemo(() => {
@@ -63,7 +63,13 @@ export function SidePanel() {
 
         {isError && (
           <div className={styles.emptyState} role="alert">
-            Failed to load stock list
+            <p>Failed to load stock list</p>
+            <button
+              className={styles.retryButton}
+              onClick={() => void refetch()}
+            >
+              Retry
+            </button>
           </div>
         )}
 
