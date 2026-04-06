@@ -56,7 +56,6 @@ function CardHeader({ symbol, history, onRemove, dragHandleProps, isDragging }: 
           {change.toFixed(1)}%
         </span>
       )}
-      {history?.mock && <span className={styles.mockBadge}>sample</span>}
       <button
         className={styles.closeButton}
         onClick={onRemove}
