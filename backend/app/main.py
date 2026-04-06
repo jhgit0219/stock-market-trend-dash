@@ -26,7 +26,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # no credentials (no cookies or HTTP auth in use)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.allowed_origins,
+    allow_origin_regex=settings.allowed_origin_regex,
     allow_credentials=False,
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type"],
