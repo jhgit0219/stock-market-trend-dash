@@ -67,6 +67,37 @@ async def stock_history(
     return history
 
 
+@router.get("/debug-av", include_in_schema=False)
+async def debug_alpha_vantage(request: Request) -> dict:
+    """Temporary debug endpoint to test Alpha Vantage connectivity."""
+    import httpx
+    from app.core.config import settings
+
+    key = settings.alpha_vantage_api_key
+    if not key:
+        return {"error": "No API key set", "key_present": False}
+
+    try:
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            resp = await client.get(
+                "https://www.alphavantage.co/query",
+                params={
+                    "function": "TIME_SERIES_MONTHLY_ADJUSTED",
+                    "symbol": "AAPL",
+                    "apikey": key,
+                },
+            )
+            return {
+                "status_code": resp.status_code,
+                "key_present": True,
+                "key_preview": f"{key[:4]}...{key[-4:]}",
+                "response_keys": list(resp.json().keys()),
+                "response_preview": str(resp.text)[:500],
+            }
+    except Exception as e:
+        return {"error": str(e), "key_present": True}
+
+
 @router.post(
     "/batch-history",
     response_model=BatchHistoryResponse,
